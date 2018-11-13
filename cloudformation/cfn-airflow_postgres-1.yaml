@@ -7,10 +7,6 @@ Parameters:
     Description: Name of an existing EC2 KeyPair to enable SSH access into the Airflow web server
     Type: AWS::EC2::KeyPair::KeyName
     ConstraintDescription: In the right Region!? Must be the name of an existing EC2 KeyPair!
-#  S3BucketName:
-#    Description: REQUIRED - A new S3 Bucket name. This bucket will be used to read and write the Movielens dataset.
-#    Type: String
-#    AllowedPattern: '.+'
   DBPassword:
     Default: Manager.123
     NoEcho: 'true'
@@ -20,7 +16,6 @@ Parameters:
     MaxLength: '41'
     AllowedPattern: '[a-zA-Z0-9_\\-\\.]*'
     ConstraintDescription: Must contain only alphanumeric and special characters
-
 # Mapping to find the Amazon Linux AMI in each region.
 Mappings:
   RegionMap:
@@ -153,26 +148,6 @@ Resources:
           FromPort: 22
           ToPort: 22
           CidrIp: 0.0.0.0/0
-#  AirflowEMRMasterEC2SecurityGroup:
-#    Type: AWS::EC2::SecurityGroup
-#    Properties:
-#      GroupName: AirflowEMRMasterSG
-#      GroupDescription: Airflow EMR Master SG
-#    DependsOn:
-#      - AirflowEC2SecurityGroup
-#  AirflowEMRMasterInboundRule:
-#    Type: AWS::EC2::SecurityGroupIngress
-#    Properties:
-#      IpProtocol: tcp
-#      FromPort: '8998'
-#      ToPort: '8998'
-#      SourceSecurityGroupName: !Ref 'AirflowEC2SecurityGroup'
-#      GroupName: !Ref 'AirflowEMRMasterEC2SecurityGroup'
-#  AirflowEMRSlaveEC2SecurityGroup:
-#    Type: AWS::EC2::SecurityGroup
-#    Properties:
-#      GroupName: AirflowEMRSlaveSG
-#      GroupDescription: Airflow EMR Slave SG
   DBSecurityGroup:
     Type: AWS::RDS::DBSecurityGroup
     Properties:
@@ -204,54 +179,6 @@ Resources:
       Roles:
         -
           Ref: EC2Role
-#  EmrRole:
-#    Type: AWS::IAM::Role
-#    Properties:
-#      RoleName: EmrRole
-#      AssumeRolePolicyDocument:
-#        Version: "2012-10-17"
-#        Statement:
-#          -
-#            Effect: "Allow"
-#            Principal:
-#              Service:
-#                - "elasticmapreduce.amazonaws.com"
-#                - "s3.amazonaws.com"
-#            Action:
-#              - "sts:AssumeRole"
-#      ManagedPolicyArns:
-#        - arn:aws:iam::aws:policy/AmazonS3FullAccess
-#        - arn:aws:iam::aws:policy/AmazonElasticMapReduceFullAccess
-#  EmrEc2Role:
-#    Type: AWS::IAM::Role
-#    Properties:
-#      RoleName: EmrEc2Role
-#      AssumeRolePolicyDocument:
-#        Version: "2012-10-17"
-#        Statement:
-#          -
-#            Effect: "Allow"
-#            Principal:
-#              Service:
-#                - "ec2.amazonaws.com"
-#            Action:
-#              - "sts:AssumeRole"
-#      ManagedPolicyArns:
-#        - arn:aws:iam::aws:policy/service-role/AmazonElasticMapReduceforEC2Role
-#        - arn:aws:iam::aws:policy/AmazonS3FullAccess
-#  EmrEc2InstanceProfile:
-#    Type: AWS::IAM::InstanceProfile
-#    Properties:
-#      InstanceProfileName: EmrEc2InstanceProfile
-#      Roles:
-#        -
-#          Ref: EmrEc2Role
-#  S3Bucket:
-#    Type: AWS::S3::Bucket
-#    DeletionPolicy: Retain
-#    Properties:
-#      AccessControl: BucketOwnerFullControl
-#      BucketName: !Ref 'S3BucketName'
 Outputs:
   AirflowEC2PublicDNSName:
     Description: Public DNS Name of the Airflow EC2 instance

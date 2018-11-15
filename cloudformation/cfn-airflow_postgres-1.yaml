@@ -16,6 +16,7 @@ Parameters:
     MaxLength: '41'
     AllowedPattern: '[a-zA-Z0-9_\\-\\.]*'
     ConstraintDescription: Must contain only alphanumeric and special characters
+
 # Mapping to find the Amazon Linux AMI in each region.
 Mappings:
   RegionMap:

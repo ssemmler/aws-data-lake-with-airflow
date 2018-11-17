@@ -1,4 +1,4 @@
-# aws-datalake-with-airflow
+# aws-data-lake-with-airflow
 This code demonstrates the architecture featured of a datalake orchestrated by Apache Airflow.
 
 ## The Data Lake Bucket:

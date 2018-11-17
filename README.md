@@ -6,7 +6,8 @@ This code demonstrates the architecture featured of a datalake orchestrated by A
 ├─s3://unit-datalake-prod-01/
 ├── README.md          <- The top-level README for developers using this project.
 │
-├── 01-raw-data-zone   <- The Raw or Persisted area of your Data Lake is where data is kept indefinitely in its raw format.#
+├── 01-raw-data-zone   <- The Raw or Persisted area of your Data Lake is where data is kept indefinitely 
+│   │                     in its raw format.
 │   │                       ✓ Exact copy of source data in native format (aka master dataset in the batch layer)
 │   │                       ✓ Immutable to change
 │   │                       ✓ History retained indefinitely
@@ -28,6 +29,20 @@ This code demonstrates the architecture featured of a datalake orchestrated by A
 ├── 03-master-data-zone <- Reference data
 │   
 ├── 04-user-drop-zone   <- Manually generated data
+│   
+├── 05-archive-data-zone   <- Active archive of aged data, available for querying when needed
+│   
+├── 06-curated-data-zone   <- Analytic or Curated. In this section of the Data Lake, the data has been heavily processed.
+│   │                         Sometimes it is aggregated and stored in a star schema-like format to conform with different
+│   │                         reporting and analysis tools.
+│   │                           ✓ Cleansed and transformed data, organized for optimal data delivery (data warehouse)
+│   │                           ✓ Supports self-service
+│   │                           ✓ Standard security, change management, and governance
+│   │                           ✓ Data staged for a specific purpose or application (data warehouse etc.)
+│   ├── 01-stage           <- Transit storage for data in the ETL process
+│   ├── 02-cleanse         <- Cleansing storage for data in the ETL process
+│   ├── 03-core            <- The Core represents the central database within the Data Lake.
+│   └── 04-mart            <- Data marts are sections of data warehouses, smaller data pools for applications
 │
 ├── data               <- The Sandbox is designed to be used by deep analysts and scientists as an unmanaged area.
 │   └── user           <- user directory

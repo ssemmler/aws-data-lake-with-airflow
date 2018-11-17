@@ -6,7 +6,7 @@ Resources:
     DeletionPolicy: Retain
     Properties:
       AccessControl: BucketOwnerFullControl
-      BucketName: unit-datalake-test-01
+      BucketName: unit-data-lake-test-01
 
 #  S3Bucket:
 #    Type: AWS::S3::Bucket

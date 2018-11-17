@@ -1,0 +1,27 @@
+<workflow-app name="JOB_DIP_WELT_AUDIENCE_MINING" xmlns="uri:oozie:workflow:0.5">
+    <start to="hive2-57b1"/>
+    <kill name="Kill">
+        <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <action name="hive2-57b1" cred="hive2">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <jdbc-url>jdbc:hive2://ip-172-31-19-227.eu-central-1.compute.internal:10000</jdbc-url>
+            <script>/user/hue/oozie/dataflow/mine/df_mine_audience_badges_visitorid_30day_ddl.sql</script>
+        </hive2>
+        <ok to="hive2-29b5"/>
+        <error to="Kill"/>
+    </action>
+    <action name="hive2-29b5" cred="hive2">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <jdbc-url>jdbc:hive2://ip-172-31-19-227.eu-central-1.compute.internal:10000</jdbc-url>
+            <script>/user/hue/oozie/dataflow/mine/df_mine_audience_badges_visitorid_30day.sql/000000_0</script>
+        </hive2>
+        <ok to="End"/>
+        <error to="Kill"/>
+    </action>
+    <end name="End"/>
+</workflow-app>

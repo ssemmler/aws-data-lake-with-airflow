@@ -6,7 +6,7 @@ This code demonstrates the architecture featured of a datalake orchestrated by A
 ├─s3://unit-data-lake-prod-01/
 ├── README.md            <- The top-level README for developers using this project.
 │
-├── A-transient-zone     <- Useful when data quality or validity checks are required before data can land in the raw zone.
+├── A-Transient-Zone     <- Useful when data quality or validity checks are required before data can land in the raw zone.
 │   │                          ✓ Selectively utilized
 │   │                          ✓ Separation of “new data” from “raw data” to ensure data consistency
 │   │                          ✓ Transient low-latency data (speed layer)
@@ -15,7 +15,7 @@ This code demonstrates the architecture featured of a datalake orchestrated by A
 │   ├── athena           <- Athena stores query results in Amazon S3. Each User has his own S3OutputDirectory.
 │   └── glue             <- Specifies an S3 path to a bucket that can be used as a temporary directory for the Job.
 │
-├── B-raw-data-zone      <- The Raw or Persisted area of your Data Lake is where data is kept indefinitely 
+├── B-Raw-Data-Zone      <- The Raw or Persisted area of your Data Lake is where data is kept indefinitely 
 │   │                        in its raw format.
 │   │                          ✓ Exact copy of source data in native format (aka master dataset in the batch layer)
 │   │                          ✓ Immutable to change
@@ -26,9 +26,9 @@ This code demonstrates the architecture featured of a datalake orchestrated by A
 │   ├── tealium           <- example of raw-data
 │   └── google            <- example of raw-data
 │   
-├── C-user-drop-zone      <- Manually generated data
+├── C-User-Drop-Zone      <- Manually generated data
 │   
-├── D-curated-data-zone   <- Analytic or Curated. In this section of the Data Lake, the data has been heavily processed.
+├── D-Curated-Data-Zone   <- Analytic or Curated. In this section of the Data Lake, the data has been heavily processed.
 │   │                         Sometimes it is aggregated and stored in a star schema-like format to conform with different
 │   │                         reporting and analysis tools.
 │   │                           ✓ Cleansed and transformed data, organized for optimal data delivery (data warehouse)
@@ -42,17 +42,17 @@ This code demonstrates the architecture featured of a datalake orchestrated by A
 │   ├── export            <- Data staged for a specific purpose
 │   └── transfer          <- Data staged for a specific application (data warehouse etc.)
 │
-├── E-sandbox-zone        <- The Sandbox is designed to be used by deep analysts and scientists as an unmanaged area.
+├── E-Sandbox-Zone        <- The Sandbox is designed to be used by deep analysts and scientists as an unmanaged area.
 │   └── user.name         <- user directory
 │
-├── F-log-zone            <- Amazon EMR, Hadoop and Glue produce log files that report status on the cluster.
+├── F-Log-Zone            <- Amazon EMR, Hadoop and Glue produce log files that report status on the cluster.
 │   ├── emr               <- optinonal
 │   ├── hadoop            <- optinonal
 │   └── glue              <- optinonal
 │   
-├── G-archive-data-zone   <- Active archive of aged data, available for querying when needed
+├── G-Archive-Data-Zone   <- Active archive of aged data, available for querying when needed
 │   
-└── H-master-data-zone    <- Reference data
+└── H-Master-Data-Zone    <- Reference data
 ```
 
 

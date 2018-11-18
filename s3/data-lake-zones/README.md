@@ -38,7 +38,8 @@ There's many different ways to organize a data lake and there are a couple of or
 │   │                          ✓ Data quality validations
 │   │
 │   ├── athena           <- Athena stores query results in Amazon S3. Each User has his own S3OutputDirectory.
-│   └── glue             <- Specifies an S3 path to a bucket that can be used as a temporary directory for the Job.
+│   └── glue             <- **--TempDir** — Specifies an S3 path to a bucket that can be used as a temporary 
+|                           directory for the Job.
 │
 ├── B-Raw-Data-Zone      <- The Raw or Persisted area of your Data Lake is where data is kept indefinitely 
 │   │                        in its raw format.

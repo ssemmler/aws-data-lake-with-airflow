@@ -52,3 +52,4 @@
 └── H-Master-Data-Zone    <- Reference data
 ```
 # Links
+https://www.sqlchick.com/

@@ -8,3 +8,8 @@ The data bucket (data lake) contains all data, from the raw data to the curated 
 <Units:> unit_1, ... , unit_n
 
 <Evironment:> test, dev, prod
+
+# Links
+[Data Lake Zones](https://www.google.com)
+
+[Data Lake Scripts](https://www.google.com)

@@ -64,8 +64,7 @@
 │   ├── notebook       <- Glue Notebooks
 │   │   └── user       <- user directory
 │   │       └── notebook   
-│   └── scripts        <- AWS Glue supports an extension of the PySpark Python dialect for scripting ETL - jobs. 
-|                         **--scriptLocation**  —  The S3 location where your ETL script is located (in a form like
+│   └── scripts        <- --scriptLocation  —  The S3 location where your ETL script is located (in a form like
 |                         s3://path/to/my/script.py). This overrides a script location set in the JobCommand object.
 │
 └── references         <- Data dictionaries, manuals, and all other explanatory materials.

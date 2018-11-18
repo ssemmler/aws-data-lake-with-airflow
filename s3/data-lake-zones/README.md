@@ -1,3 +1,31 @@
+# Data Lake
+A data lake is one piece of an overall data management strategy. Conceptually, a data lake is nothing more than a data repository. The data lake can store any type of data. Cost and effort are reduced because the data is stored in its original native format with no structure (schema) required of it initially.
+
+# Planning a Data Lake
+As we discussed above, a data lake reduces the up-front effort of getting data stored because we aren't absolutely required to structure it first. However, that doesn't mean there's no planning at all. There's various things you want to consider as you're planning a data lake -- to prevent it from becoming the dreaded data swamp -- including things such as:
+
+-  Ingestion needs (push / pull via streaming or batch)
+-  Security around data access
+-  Data retention and archival policies
+-  Encryption requirements
+-  Governance
+-  Data quality
+-  Master data management
+-  Validity checks necessary
+-  Metadata management
+-  Organization of data for optimal data retrieval
+-  Scheduling and job management
+-  Logging and auditing
+-  To what extent data federation will be utilized
+-  Enrichment, standardization, cleansing, and curation needs
+-  Technology choices comprising the overall data lake architecture (HDFS, Hadoop components, NoSQL DBs, relational DBs, etc.)
+-  Modular approach to the overall design
+
+You definitely want to spend some time planning out how the data will be organized so that finding the data is as straightforward as possible. Just like with planning anything where data is stored (for example, a regular file share, or a SharePoint document library, etc.), you usually want to consider subject areas along with user groups and security boundaries. 
+
+# Organizing the Data Lake
+There's many different ways to organize a data lake and there are a couple of organization examples. Above all else, the data lake should be organized for optimal data retrieval. Metadata capabilities of your data lake will greatly influence how you handle organization.
+
 ## The Data Lake Bucket:
 ```
 ├─s3://unit-data-lake-prod-01/

@@ -2,7 +2,7 @@
 A data lake is one piece of an overall data management strategy. Conceptually, a data lake is nothing more than a data repository. The data lake can store any type of data. Cost and effort are reduced because the data is stored in its original native format with no structure (schema) required of it initially.
 
 # Planning a Data Lake
-As we discussed above, a data lake reduces the up-front effort of getting data stored because we aren't absolutely required to structure it first. However, that doesn't mean there's no planning at all. There's various things you want to consider as you're planning a data lake -- to prevent it from becoming the dreaded data swamp -- including things such as:
+There's various things you want to consider as you're planning a data lake -- to prevent it from becoming the dreaded data swamp -- including things such as:
 
 -  Ingestion needs (push / pull via streaming or batch)
 -  Security around data access

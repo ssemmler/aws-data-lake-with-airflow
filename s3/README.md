@@ -10,6 +10,6 @@ The data bucket (data lake) contains all data, from the raw data to the curated 
 <Evironment:> test, dev, prod
 
 # Links
-[Data Lake Zones](https://www.google.com)
+[Data Lake Zones](https://github.com/ssemmler/aws-data-lake-with-airflow/tree/master/s3/data-lake-zones)
 
-[Data Lake Scripts](https://www.google.com)
+[Data Lake Scripts](https://github.com/ssemmler/aws-data-lake-with-airflow/tree/master/s3/data-lake-scripts)

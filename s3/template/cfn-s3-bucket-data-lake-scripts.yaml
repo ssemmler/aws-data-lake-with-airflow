@@ -1,0 +1,10 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create the bucket for the Data Lake that contains all the scripts.
+Resources:
+  s3unitdatalakescriptsprod01:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      AccessControl: Private
+      BucketName: unit-data-lake-scripts-prod-01
+      VersioningConfiguration:
+        Status: Suspended

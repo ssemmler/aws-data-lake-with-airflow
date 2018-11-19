@@ -27,9 +27,9 @@ Outputs:
   DataLakeGroups:
     Value: !Join
              - ', '
-             - - !Ref DataLakeAdminGroup
-             - - !Ref DataLakeDeveloperGroup
-             - - !Ref DataLakeScientistGroup
-             - - !Ref DataLakeAnalystGroup
-             - - !Ref DataLakeExecutivGroup
+               - !Ref DataLakeAdminGroup
+               - !Ref DataLakeDeveloperGroup
+               - !Ref DataLakeScientistGroup
+               - !Ref DataLakeAnalystGroup
+               - !Ref DataLakeExecutivGroup
     Description: A list of all groups created in the Data Lake.

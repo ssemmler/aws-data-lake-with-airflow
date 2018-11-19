@@ -23,3 +23,7 @@ Resources:
     Type: AWS::IAM::Group
     Properties:
       GroupName: DataLakeExecutivGroup
+Outputs:
+  Data Lake Groups:
+    Value: !GetAtt [DataLakeAdminGroup, DataLakeDeveloperGroup, DataLakeScientistGroup, DataLakeAnalystGroup, DataLakeExecutivGroup]
+    Description: All Groups of the data lake implementation.

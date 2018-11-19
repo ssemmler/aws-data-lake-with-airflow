@@ -24,6 +24,6 @@ Resources:
     Properties:
       GroupName: DataLakeExecutivGroup
 Outputs:
-  Data Lake Groups:
+  DataLakeGroups:
     Value: !GetAtt [DataLakeAdminGroup, DataLakeDeveloperGroup, DataLakeScientistGroup, DataLakeAnalystGroup, DataLakeExecutivGroup]
     Description: All Groups of the data lake implementation.

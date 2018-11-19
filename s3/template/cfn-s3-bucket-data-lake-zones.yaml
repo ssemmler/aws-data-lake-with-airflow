@@ -11,8 +11,10 @@ Resources:
           - ExpirationInDays: '10'
             Id: Cleanup_F_Log_Zone_10days
             Status: Enabled
+            Prefix: F-Log-Zone/
           - ExpirationInDays: '10'
             Id: Cleanup_A_Transient_Zone_10days
             Status: Enabled
+            Prefix: A-Transient-Zone/
       VersioningConfiguration:
         Status: Suspended

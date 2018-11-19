@@ -1,7 +1,7 @@
 # Data Lake Scripts
 
 ```
-├─s3://unit-data-lake-prod-01/
+├─s3://unit-data-lake-scripts-prod-01/
 ├── README.md          <- The top-level README for developers using this project.
 ├── aws                <- AWS scripts
 │   └── bin            <- Shell scripts to start AWS Cluster manually or via Crontab and AWS CLI with Json-Configuration

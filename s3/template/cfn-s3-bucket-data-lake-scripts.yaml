@@ -8,3 +8,7 @@ Resources:
       BucketName: unit-data-lake-scripts-prod-01
       VersioningConfiguration:
         Status: Suspended
+Outputs:
+  S3BucketSecureURL:
+    Value: !Join ['', ['https://', !GetAtt [s3unitdatalakescriptsprod01, DomainName]]]
+    Description: Name of S3 bucket to hold the data lake data files.

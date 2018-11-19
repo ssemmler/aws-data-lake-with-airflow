@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata: 
+  License: Apache-2.0
+Description: 'AWS CloudFormation Template which creates all data lake groups.'
+Resources:
+  DataLakeAdminGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: DataLakeAdminGroup
+  DataLakeDeveloperGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: DataLakeDeveloperGroup
+  DataLakeScientistGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: DataLakeScientistGroup
+  DataLakeAnalystGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: DataLakeAnalystGroup
+  DataLakeExecutivGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: DataLakeExecutivGroup

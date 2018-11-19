@@ -19,10 +19,10 @@ DataLakeAllReadPolicy:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01Read*'
       Groups: ['DataLakeAdminGroup']
-  DataLakeAllScriptsRWPolicy:
+DataLakeAllReadPolicy:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: DataLakeAllScriptsRWPolicy
+      PolicyName: DataLakeAllReadPolicy
       PolicyDocument:
         Statement:
         - Effect: Allow
@@ -30,8 +30,8 @@ DataLakeAllReadPolicy:
           Resource: 'arn:aws:s3:::*'
         - Effect: Allow
           Action: ['s3:ListBucket']
-          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
         - Effect: Allow
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
-          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/*'
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01Read*'
       Groups: ['DataLakeAdminGroup']

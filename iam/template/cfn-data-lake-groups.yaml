@@ -27,7 +27,7 @@ Outputs:
   DataLakeGroups:
     Value: !Join
              - ', '
-               - !Ref DataLakeAdminGroup
+             - - !Ref DataLakeAdminGroup
                - !Ref DataLakeDeveloperGroup
                - !Ref DataLakeScientistGroup
                - !Ref DataLakeAnalystGroup

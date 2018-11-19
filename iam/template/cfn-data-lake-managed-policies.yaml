@@ -1,4 +1,8 @@
-  DataLakeAllZonesReadPolicy:
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata: 
+  License: Apache-2.0
+Description: 'AWS CloudFormation Template which creates all data lake IAM managed policies and assign it to a IAM group.'
+Resources: DataLakeAllZonesReadPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
       ManagedPolicyName: DataLakeAllZonesReadPolicy

@@ -2,14 +2,14 @@ AWSTemplateFormatVersion: '2010-09-09'
 Metadata: 
   License: Apache-2.0
 Description: 'AWS CloudFormation Template which creates all data lake IAM managed policies and assign it to a IAM group.'
-    Path: "/"
+Path: '/'
 Resources:
   DataLakeAllZonesReadPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
       ManagedPolicyName: DataLakeAllZonesReadPolicy
       PolicyDocument: 
-      Version: "2012-10-17"
+        Version: '2012-10-17'
         Statement:
         - Effect: Allow
           Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']

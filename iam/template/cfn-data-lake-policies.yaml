@@ -6,7 +6,7 @@ Resources:
   DataLakeAllScriptsRWPolicy:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: 'DataLakeAllScriptsRWPolicy'
+      PolicyName: DataLakeAllScriptsRWPolicy
       PolicyDocument:
         Statement:
         - Effect: Allow
@@ -18,4 +18,4 @@ Resources:
         - Effect: Allow
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/*'
-      Groups: 'DataLakeAdminGroup'
+      Groups: ['DataLakeAdminGroup']

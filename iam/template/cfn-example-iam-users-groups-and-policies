@@ -25,12 +25,17 @@ Resources:
   CFNUser:
     Type: AWS::IAM::User
     Properties:
+      UserName: CFNUser
       LoginProfile:
         Password: !Ref 'Password'
   CFNUserGroup:
     Type: AWS::IAM::Group
+    Properties:
+      GroupName: CFNUserGroup
   CFNAdminGroup:
     Type: AWS::IAM::Group
+    Properties:
+      GroupName: CFNAdminGroup
   Users:
     Type: AWS::IAM::UserToGroupAddition
     Properties:
@@ -44,7 +49,7 @@ Resources:
   CFNUserPolicies:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: CFNUsers
+      PolicyName: CFNUsersPolicy
       PolicyDocument:
         Statement:
         - Effect: Allow
@@ -54,7 +59,7 @@ Resources:
   CFNAdminPolicies:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: CFNAdmins
+      PolicyName: CFNAdminsPolicy
       PolicyDocument:
         Statement:
         - Effect: Allow

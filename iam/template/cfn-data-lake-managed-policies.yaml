@@ -4,11 +4,10 @@ Metadata:
 Description: 'AWS CloudFormation Template which creates all data lake IAM managed policies and assign it to a IAM group.'
 Resources:
   DataLakeAllZonesReadPolicy:
-    Type: AWS::IAM::ManagedPolicy
+    Type: AWS::IAM::Policy
     Properties:
-      ManagedPolicyName: DataLakeAllZonesReadPolicy
-      PolicyDocument: 
-        Version: '2012-10-17'
+      PolicyName: DataLakeAllZonesReadPolicy
+      PolicyDocument:
         Statement:
         - Effect: Allow
           Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']

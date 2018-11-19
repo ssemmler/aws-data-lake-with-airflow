@@ -19,10 +19,10 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/*'
       Groups: ['DataLakeAdminGroup']
-DataLakeAllReadPolicy:
+  DataLakeAllZonesReadPolicy:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: DataLakeAllReadPolicy
+      PolicyName: DataLakeAllZonesReadPolicy
       PolicyDocument:
         Statement:
         - Effect: Allow

@@ -3,6 +3,22 @@ Metadata:
   License: Apache-2.0
 Description: 'AWS CloudFormation Template which creates all data lake IAM policies and assign it to a IAM group.'
 Resources:
+DataLakeAllReadPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: DataLakeAllReadPolicy
+      PolicyDocument:
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01Read*'
+      Groups: ['DataLakeAdminGroup']
   DataLakeAllScriptsRWPolicy:
     Type: AWS::IAM::Policy
     Properties:

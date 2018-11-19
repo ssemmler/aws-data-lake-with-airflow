@@ -6,7 +6,7 @@ Resources:
   DataLakeAllScriptsRWPolicy:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: DataLakeAllScriptsRWPolicy
+      PolicyName: 'DataLakeAllScriptsRWPolicy'
       PolicyDocument:
         Statement:
         - Effect: Allow

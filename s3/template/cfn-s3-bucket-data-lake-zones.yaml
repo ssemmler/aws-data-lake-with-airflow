@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: AWS CloudFormation templates to create the bucket for the Data Lake that contains all the data.
+Resources:
+  s3unitdatalakeprod01:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      AccessControl: Private
+      BucketName: unit-data-lake-zones-prod-01
+      LifecycleConfiguration:
+        Rules:
+          - ExpirationInDays: '10'
+            Id: Cleanup_F_Log_Zone_10days
+            Status: Enabled
+          - ExpirationInDays: '10'
+            Id: Cleanup_A_Transient_Zone_10days
+            Status: Enabled
+      VersioningConfiguration:
+        Status: Suspended

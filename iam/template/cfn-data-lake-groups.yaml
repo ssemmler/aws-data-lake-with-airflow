@@ -25,5 +25,11 @@ Resources:
       GroupName: DataLakeExecutivGroup
 Outputs:
   DataLakeGroups:
-    Value: !GetAtt [DataLakeAdminGroup, DataLakeDeveloperGroup, DataLakeScientistGroup, DataLakeAnalystGroup, DataLakeExecutivGroup]
-    Description: All Groups of the data lake implementation.
+    Value: !Join
+        - ','
+        - !Ref DataLakeAdminGroup
+        - !Ref DataLakeDeveloperGroup
+        - !Ref DataLakeScientistGroup
+        - !Ref DataLakeAnalystGroup
+        - !Ref DataLakeExecutivGroup
+    Description: A list of all groups created in the Data Lake.

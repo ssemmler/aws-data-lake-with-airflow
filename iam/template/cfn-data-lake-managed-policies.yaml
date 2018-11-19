@@ -20,3 +20,666 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/*'
       Groups: ['DataLakeAdminGroup']
+  DataLakeAllZonesWritePolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeAllZonesWritePolicy
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeAZoneReadPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeAZoneReadPolicy
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/A-Transient-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeAZoneWritePolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeAZoneWritePolicy
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/A-Transient-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeBZoneReadPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeBZoneReadPolicy
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/B-Raw-Data-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeBZoneWritePolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeBZoneWritePolicy
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/B-Raw-Data-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeCZoneReadPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeCZoneReadPolicy
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/C-User-Drop-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeCZoneWritePolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeCZoneWritePolicy
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/C-User-Drop-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyAllRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyAllRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyAllWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyAllWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyStgRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyStgRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Stage/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyStgWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyStgWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Stage/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyClsRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyClsRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Cleanse/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyClsWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyClsWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Cleanse/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyCoreRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyCoreRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Core/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyCoreWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyCoreWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Core/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyMartRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyMartRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Mart/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyMartWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyMartWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Mart/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyExpRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyExpRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Export/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyExpWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyExpWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Export/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyTransRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyTransRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Transfer/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeDZonePolicyTransWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeDZonePolicyTransWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Transfer/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeEZonePolicyRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeEZonePolicyRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/E-Sandbox-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeEZonePolicyWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeEZonePolicyWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/E-Sandbox-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeFZonePolicyRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeFZonePolicyRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/F-Log-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeFZonePolicyWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeFZonePolicyWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/F-Log-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeGZonePolicyRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeGZonePolicyRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/G-Archive-Data-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeGZonePolicyWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeGZonePolicyWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/G-Archive-Data-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeHZonePolicyRead:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeHZonePolicyRead
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/H-Master-Data-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeHZonePolicyWrite:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeHZonePolicyWrite
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/H-Master-Data-Zone/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeAllScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeAllScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeAwsScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeAwsScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/aws/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeEmrScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeEmrScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/emr/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeHiveScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeHiveScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/hive/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeOozieScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeOozieScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/oozie/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeJupyterScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeJupyterScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/jupyter/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeZeppelinScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeZeppelinScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/zeppelin/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeRStudioScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeRStudioScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/rsstudio/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeSagemakerScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeSagemakerScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/sagemaker/*'
+      Groups: ['DataLakeAdminGroup']
+  DataLakeGlueScriptsPolicyRW:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: DataLakeGlueScriptsPolicyRW
+      PolicyDocument: 
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ['s3:GetBucketLocation', 's3:ListAllMyBuckets']
+          Resource: 'arn:aws:s3:::*'
+        - Effect: Allow
+          Action: ['s3:ListBucket']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01'
+        - Effect: Allow
+          Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
+          Resource: 'arn:aws:s3:::unit-data-lake-scripts-prod-01/glue/*'
+      Groups: ['DataLakeAdminGroup']

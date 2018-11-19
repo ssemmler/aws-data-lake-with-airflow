@@ -28,7 +28,7 @@ There's many different ways to organize a data lake and there are a couple of or
 
 ## The Data Lake Bucket:
 ```
-├─s3://unit-data-lake-prod-01/
+├─s3://unit-data-lake-zones-prod-01/
 ├── README.md            <- The top-level README for developers using this project.
 │
 ├── A-Transient-Zone     <- Useful when data quality or validity checks are required before data can land in the raw zone.

@@ -24,7 +24,7 @@ Parameters:
     MinLength: '8'
     MaxLength: '41'
     AllowedPattern: "^[^\"@]+$"
-    ConstraintDescription: IAM user's console password, that follows accounts IAM password policy
+    ConstraintDescription: IAM user's console password, that follows accounts IAM password policy (Minimum password length 6-128, Require at least one uppercase letter, Require at least one lowercase letter, Require at least one number, Require at least one nonalphanumeric character)
   FirstName:
     Type: String
     Description: New account firstname

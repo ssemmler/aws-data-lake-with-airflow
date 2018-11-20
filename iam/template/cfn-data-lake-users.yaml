@@ -18,12 +18,15 @@ Parameters:
       - DownstreamSystemGroup
   Password:
     NoEcho: 'true'
+    Default: ABCdef.123
     Type: String
+    Password: String
+    PasswordResetRequired: 'true'
     Description: New account password
     MinLength: '8'
     MaxLength: '41'
     AllowedPattern: "^[^\"@]+$"
-    ConstraintDescription: The password must be between 8 and 41 characters and can be any printable ASCII character except '/', '"', or '@'
+    ConstraintDescription: IAM user's console password, that follows accounts IAM password policy
   UserName:
     NoEcho: 'false'
     Type: String

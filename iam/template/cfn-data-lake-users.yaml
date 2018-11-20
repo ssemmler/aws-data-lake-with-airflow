@@ -17,11 +17,9 @@ Parameters:
       - DataLakeExecutivGroup
       - DownstreamSystemGroup
   Password:
-    NoEcho: 'true'
+    NoEcho: 'false'
     Default: ABCdef.123
     Type: String
-    Password: String
-    PasswordResetRequired: 'true'
     Description: New account password
     MinLength: '8'
     MaxLength: '41'
@@ -40,6 +38,7 @@ Resources:
       UserName: !Ref 'UserName'
       LoginProfile:
         Password: !Ref 'Password'
+        PasswordResetRequired: 'True'
   DataLakeGroups:
     Type: AWS::IAM::UserToGroupAddition
     Properties:

@@ -6,23 +6,33 @@ Resources:
   DataLakeAdminGroup:
     Type: AWS::IAM::Group
     Properties:
+      Description: The Data Lake Admin is a superuser. He can manage everything and has full access to data.
       GroupName: DataLakeAdminGroup
   DataLakeDeveloperGroup:
     Type: AWS::IAM::Group
     Properties:
+      Description: The Data Lake Developer is responsible for the data pipelines. He can manage the big data tools and has nearly full access to data.
       GroupName: DataLakeDeveloperGroup
   DataLakeScientistGroup:
     Type: AWS::IAM::Group
     Properties:
+      Description: Data scientists are typically looking at the datasets and trying to build models on top of them, performing exploratory ad hoc analyses to prove or come up with a thesis about what they see.
       GroupName: DataLakeScientistGroup
   DataLakeAnalystGroup:
     Type: AWS::IAM::Group
     Properties:
+      Description: Business analysts usually try to correlate some of the datasets and create an aggregated view to slice and dice using a business intelligence or visualization tool.
       GroupName: DataLakeAnalystGroup
   DataLakeExecutivGroup:
     Type: AWS::IAM::Group
     Properties:
+      Description: An executive is usually a person in senior management looking for high-level analyses that can help them make important business decisions.
       GroupName: DataLakeExecutivGroup
+  DownstreamSystemGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      Description: A fourth type of consumer is a downstream system, such as an application or a platform, which receives the raw or refined data.
+      GroupName: DownstreamSystemGroup
 Outputs:
   DataLakeGroups:
     Value: !Join
@@ -32,4 +42,5 @@ Outputs:
                - !Ref DataLakeScientistGroup
                - !Ref DataLakeAnalystGroup
                - !Ref DataLakeExecutivGroup
+               - !Ref DownstreamSystemGroup
     Description: A list of all groups created in the Data Lake.

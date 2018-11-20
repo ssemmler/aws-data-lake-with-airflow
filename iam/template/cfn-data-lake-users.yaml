@@ -17,7 +17,7 @@ Parameters:
       - DataLakeExecutivGroup
       - DownstreamSystemGroup
   Password:
-    NoEcho: 'false'
+    NoEcho: 'true'
     Default: ABCdef.123
     Type: String
     Description: New account password

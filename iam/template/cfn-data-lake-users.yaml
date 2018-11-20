@@ -47,11 +47,15 @@ Resources:
     Properties:
       UserName: !Ref 'DataLakeUser'
 Outputs:
+  UserName:
+    Value: !Ref 'UserName'
+    Description: IAM User Account Name
+  GroupName:
+    Value: !Ref 'GroupName'
+    Description: IAM Data Lake Groupin which the user is member of.
   AccessKey:
     Value: !Ref 'DataLakeKeys'
     Description: AWSAccessKeyId of new user
   SecretKey:
-    UserName   : !GetAtt [UserName]
-    GroupName  : !GetAtt [GroupName]
-    Value      : !GetAtt [DataLakeKeys, SecretAccessKey]
+    Value: !GetAtt [DataLakeKeys, SecretAccessKey]
     Description: AWSSecretKey of new data lake user

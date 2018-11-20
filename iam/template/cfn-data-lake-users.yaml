@@ -23,13 +23,13 @@ Resources:
   DataLakeUser:
     Type: AWS::IAM::User
     Properties:
-      UserName: DLUser
+      UserName: !Ref 'UserName'
       LoginProfile:
         Password: !Ref 'Password'
   DataLakeGroups:
     Type: AWS::IAM::UserToGroupAddition
     Properties:
-      GroupName: !Ref 'DataLakeAdminGroup'
+      GroupName: DataLakeAdminGroup
       Users: [!Ref 'DataLakeUser']
   DataLakeKeys:
     Type: AWS::IAM::AccessKey

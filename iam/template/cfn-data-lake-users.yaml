@@ -40,7 +40,7 @@ Resources:
   DataLakeGroups:
     Type: AWS::IAM::UserToGroupAddition
     Properties:
-      GroupName: [!Ref 'GroupName']
+      GroupName: !Ref 'GroupName'
       Users: [!Ref 'DataLakeUser']
   DataLakeKeys:
     Type: AWS::IAM::AccessKey
@@ -51,5 +51,7 @@ Outputs:
     Value: !Ref 'DataLakeKeys'
     Description: AWSAccessKeyId of new user
   SecretKey:
-    Value: !GetAtt [DataLakeKeys, SecretAccessKey]
+    UserName   : !Ref 'UserName'
+    GroupName  : !Ref 'GroupName'
+    Value      : !GetAtt [DataLakeKeys, SecretAccessKey]
     Description: AWSSecretKey of new data lake user

@@ -5,12 +5,17 @@ Description: 'It creates a single user that is a member of a data lake group. Th
   different IAM policies associated with them. Note: This example also creates an
   AWSAccessKeyId/AWSSecretKey pair associated with the new user.'
 Parameters:
-  UserName:
-    NoEcho: 'false'
+  GroupName:
     Type: String
-    Description: New account name (firstname.lastname)
-    AllowedPattern: "^[a-z0-9:.-]*$"
-    ConstraintDescription: Must be a valid user name ^[a-z0-9:.-]*$
+    Default: DataLakeAnalystGroup
+    Description: A data lake group
+    AllowedValues:
+      - DataLakeAdminGroup
+      - DataLakeDeveloperGroup
+      - DataLakeScientistGroup
+      - DataLakeAnalystGroup
+      - DataLakeExecutivGroup
+      - DownstreamSystemGroup
   Password:
     NoEcho: 'true'
     Type: String
@@ -19,6 +24,12 @@ Parameters:
     MaxLength: '41'
     AllowedPattern: "^[^\"@]+$"
     ConstraintDescription: The password must be between 8 and 41 characters and can be any printable ASCII character except '/', '"', or '@'
+  UserName:
+    NoEcho: 'false'
+    Type: String
+    Description: New account name (firstname.lastname)
+    AllowedPattern: "^[a-z0-9:.-]*$"
+    ConstraintDescription: Must be a valid user name ^[a-z0-9:.-]*$
 Resources:
   DataLakeUser:
     Type: AWS::IAM::User

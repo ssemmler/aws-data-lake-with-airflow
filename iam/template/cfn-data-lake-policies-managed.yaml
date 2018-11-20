@@ -6,6 +6,7 @@ Resources:
   DataLakeAllZonesReadPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for read access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/'.
       ManagedPolicyName: DataLakeAllZonesReadPolicy
       PolicyDocument: 
         Version: '2012-10-17'
@@ -23,6 +24,7 @@ Resources:
   DataLakeAllZonesWritePolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for write access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/'.
       ManagedPolicyName: DataLakeAllZonesWritePolicy
       PolicyDocument: 
         Version: '2012-10-17'
@@ -37,11 +39,10 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/*'
       Groups: ['DataLakeAdminGroup','DataLakeDeveloperGroup']
-
-
   DataLakeBZoneReadPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for read access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/B-Raw-Data-Zone/'.
       ManagedPolicyName: DataLakeBZoneReadPolicy
       PolicyDocument: 
         Version: '2012-10-17'
@@ -56,10 +57,10 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/B-Raw-Data-Zone/*'
       Groups: ['DataLakeScientistGroup']
-
   DataLakeCZoneReadPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for read access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/C-User-Drop-Zone/'.
       ManagedPolicyName: DataLakeCZoneReadPolicy
       PolicyDocument: 
         Version: '2012-10-17'
@@ -77,6 +78,7 @@ Resources:
   DataLakeCZoneWritePolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for write access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/C-User-Drop-Zone/'.
       ManagedPolicyName: DataLakeCZoneWritePolicy
       PolicyDocument: 
         Version: '2012-10-17'
@@ -91,16 +93,11 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/C-User-Drop-Zone/*'
       Groups: ['DataLakeScientistGroup']
-
-
-
-
-
-
-  DataLakeDZonePolicyCoreRead:
+  DataLakeDZoneCoreReadPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
-      ManagedPolicyName: DataLakeDZonePolicyCoreRead
+      Description: Policy for read access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/D-Curated-Data-Zone/Core/'.
+      ManagedPolicyName: DataLakeDZoneCoreReadPolicy
       PolicyDocument: 
         Version: '2012-10-17'
         Statement:
@@ -114,11 +111,11 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Core/*'
       Groups: ['DataLakeScientistGroup','DataLakeAnalystGroup']
-
-  DataLakeDZonePolicyMartRead:
+  DataLakeDZoneMartReadPolicy:
     Type: AWS::IAM::ManagedPolicy
     Properties:
-      ManagedPolicyName: DataLakeDZonePolicyMartRead
+      Description: Policy for read access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/D-Curated-Data-Zone/Mart/'.
+      ManagedPolicyName: DataLakeDZoneMartReadPolicy
       PolicyDocument: 
         Version: '2012-10-17'
         Statement:
@@ -132,14 +129,10 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Mart/*'
       Groups: ['DataLakeScientistGroup','DataLakeAnalystGroup']
-
-
-
-
-
   DataLakeEZonePolicyRead:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for read access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/E-Sandbox-Zone/'.
       ManagedPolicyName: DataLakeEZonePolicyRead
       PolicyDocument: 
         Version: '2012-10-17'
@@ -157,6 +150,7 @@ Resources:
   DataLakeEZonePolicyWrite:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for write access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/E-Sandbox-Zone/'.
       ManagedPolicyName: DataLakeEZonePolicyWrite
       PolicyDocument: 
         Version: '2012-10-17'
@@ -174,6 +168,7 @@ Resources:
   DataLakeFZonePolicyRead:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for read access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/F-Log-Zone/'.
       ManagedPolicyName: DataLakeFZonePolicyRead
       PolicyDocument: 
         Version: '2012-10-17'
@@ -188,10 +183,10 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/F-Log-Zone/*'
       Groups: ['DataLakeScientistGroup','DataLakeAnalystGroup']
-
   DataLakeGZonePolicyRead:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for read access to the data lake bucket 'unit-data-lake-zones-prod-01' with the bucket folder '/G-Archive-Data-Zone/'.
       ManagedPolicyName: DataLakeGZonePolicyRead
       PolicyDocument: 
         Version: '2012-10-17'
@@ -206,12 +201,10 @@ Resources:
           Action: ['s3:PutObject','s3:GetObject','s3:DeleteObject']
           Resource: 'arn:aws:s3:::unit-data-lake-zones-prod-01/G-Archive-Data-Zone/*'
       Groups: ['DataLakeScientistGroup','DataLakeAnalystGroup']
-
-
-
   DataLakeAllScriptsPolicyRW:
     Type: AWS::IAM::ManagedPolicy
     Properties:
+      Description: Policy for read/write access to the data lake bucket 'unit-data-lake-scripts-prod-01' with the bucket folder '/'.
       ManagedPolicyName: DataLakeAllScriptsPolicyRW
       PolicyDocument: 
         Version: '2012-10-17'

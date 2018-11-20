@@ -25,17 +25,26 @@ Parameters:
     MaxLength: '41'
     AllowedPattern: "^[^\"@]+$"
     ConstraintDescription: IAM user's console password, that follows accounts IAM password policy
-  UserName:
-    NoEcho: 'false'
+  FirstName:
     Type: String
-    Description: New account name (firstname.lastname)
-    AllowedPattern: "^[a-z0-9:.-]*$"
-    ConstraintDescription: Must be a valid user name ^[a-z0-9:.-]*$
+    Description: New account firstname
+    AllowedPattern: "^[A-Za-z][A-Za-z0-9]+$"
+    ConstraintDescription: Alphanumeric characters only and must start with a letter
+  LastName:
+    Type: String
+    Description: New account lastname
+    AllowedPattern: "^[A-Za-z][A-Za-z0-9]+$"
+    ConstraintDescription: Alphanumeric characters only and must start with a letter
 Resources:
   DataLakeUser:
     Type: AWS::IAM::User
     Properties:
-      UserName: !Ref 'UserName'
+      UserName: !Join
+        - ''
+        - - 'DLake-'
+          - !Ref 'FirstName'
+          - '-'
+          - !Ref 'LastName'
       LoginProfile:
         Password: !Ref 'Password'
         PasswordResetRequired: 'True'
@@ -50,7 +59,12 @@ Resources:
       UserName: !Ref 'DataLakeUser'
 Outputs:
   UserName:
-    Value: !Ref 'UserName'
+    Value: !Join
+      - ''
+      - - 'DLake-'
+        - !Ref 'FirstName'
+        - '-'
+        - !Ref 'LastName'
     Description: IAM User Account Name
   GroupName:
     Value: !Ref 'GroupName'

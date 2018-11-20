@@ -51,7 +51,7 @@ Outputs:
     Value: !Ref 'DataLakeKeys'
     Description: AWSAccessKeyId of new user
   SecretKey:
-    UserName   : !Ref 'UserName'
-    GroupName  : !Ref 'GroupName'
+    UserName   : !GetAtt [DataLakeUser, UserName]
+    GroupName  : !GetAtt [DataLakeGroups, GroupName]
     Value      : !GetAtt [DataLakeKeys, SecretAccessKey]
     Description: AWSSecretKey of new data lake user

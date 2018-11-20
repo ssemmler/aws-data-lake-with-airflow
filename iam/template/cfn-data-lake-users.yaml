@@ -52,7 +52,7 @@ Outputs:
     Description: IAM User Account Name
   GroupName:
     Value: !Ref 'GroupName'
-    Description: IAM Data Lake Groupin which the user is member of.
+    Description: IAM Data Lake Group in which the user is member of.
   AccessKey:
     Value: !Ref 'DataLakeKeys'
     Description: AWSAccessKeyId of new user

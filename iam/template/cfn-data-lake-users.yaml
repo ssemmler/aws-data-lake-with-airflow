@@ -40,7 +40,7 @@ Resources:
   DataLakeGroups:
     Type: AWS::IAM::UserToGroupAddition
     Properties:
-      GroupName: DataLakeAdminGroup
+      GroupName: [!Ref 'GroupName']
       Users: [!Ref 'DataLakeUser']
   DataLakeKeys:
     Type: AWS::IAM::AccessKey

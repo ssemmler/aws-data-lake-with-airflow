@@ -22,3 +22,5 @@ Management User Guide.
 https://docs.aws.amazon.com/AmazonS3/latest/dev/Welcome.html
 
 https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html
+
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_delegate-permissions_examples.html#creds-policies-mfa-console

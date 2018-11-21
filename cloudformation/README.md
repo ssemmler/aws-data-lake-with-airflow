@@ -7,5 +7,8 @@ https://github.com/awslabs/aws-cloudformation-templates
 
 https://github.com/widdix/aws-cf-templates
 
+For supported AWS Config managed rules, you can use the AWS CloudFormation templates to create the rule for your account or update an existing AWS CloudFormation stack.
+https://docs.aws.amazon.com/de_de/config/latest/developerguide/aws-config-managed-rules-cloudformation-templates.html
+
 - Learn how to use templates to create AWS CloudFormation stacks using the [AWS Management Console](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html) or [AWS Command Line Interface (AWS CLI)](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-cli-creating-stack.html).
 - To view all the supported AWS resources and their properties, see the [Template Reference](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-reference.html).

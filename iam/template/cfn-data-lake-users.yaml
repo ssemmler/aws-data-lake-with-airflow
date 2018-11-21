@@ -20,7 +20,7 @@ Parameters:
     NoEcho: 'false'
     Default: ABCdef.123$
     Type: String
-    Description: New account password e.g. "ABCdef.123$". Must be changed at first login. (Minimum password length 6-128, Require at least one uppercase letter, Require at least one lowercase letter, Require at least one number, Require at least one nonalphanumeric character). 
+    Description: New account password. Minimum password length 6-128, Require at least one uppercase letter, Require at least one lowercase letter, Require at least one number, Require at least one nonalphanumeric character e.g. "ABCdef.123$". Must be changed at first login. 
     MinLength: '8'
     MaxLength: '41'
     AllowedPattern: "^[^\"@]+$"

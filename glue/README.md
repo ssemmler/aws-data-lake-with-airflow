@@ -9,3 +9,10 @@ AWS Glue is serverless, so there is no infrastructure to buy, set up, or manage.
 
 ### Introducing AWS Glue (1:47)
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=qO4Z1k2dLrw" target="_blank"><img src="http://img.youtube.com/vi/qO4Z1k2dLrw/0.jpg" alt="Introducing AWS Glue (1:47)" width="240" height="180" border="10" /></a>
+
+## Links
+https://github.com/awsdocs/aws-glue-developer-guide
+
+https://github.com/aws-samples/aws-glue-samples
+
+https://github.com/awslabs/aws-glue-libs/tree/master/awsglue

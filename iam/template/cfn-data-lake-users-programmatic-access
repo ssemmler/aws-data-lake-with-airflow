@@ -36,9 +36,6 @@ Resources:
           - '-'
           - !Ref 'LastName'
           - '-srv'
-      LoginProfile:
-        Password: !Ref 'Password'
-        PasswordResetRequired: 'True'
   DataLakeGroups:
     Type: AWS::IAM::UserToGroupAddition
     Properties:

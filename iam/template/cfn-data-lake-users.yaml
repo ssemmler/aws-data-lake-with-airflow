@@ -17,8 +17,8 @@ Parameters:
       - DataLakeExecutivGroup
       - DownstreamSystemGroup
   Password:
-    NoEcho: 'true'
-    Default: ABCdef.123
+    NoEcho: 'false'
+    Default: ABCdef.123$
     Type: String
     Description: New account password
     MinLength: '8'

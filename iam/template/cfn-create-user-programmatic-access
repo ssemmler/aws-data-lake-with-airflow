@@ -1,0 +1,87 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata: 
+  License: Apache-2.0
+Description: 'It creates a single user that is a member of a data lake group. The groups each have
+  different IAM policies associated with them. Note: This example also creates an
+  AWSAccessKeyId/AWSSecretKey pair associated with the new user.'
+Parameters:
+  GroupName:
+    Type: String
+    Default: DataLakeAnalystGroup
+    Description: A data lake group
+    AllowedValues:
+      - DataLakeAdminGroup
+      - DataLakeDeveloperGroup
+      - DataLakeScientistGroup
+      - DataLakeAnalystGroup
+      - DataLakeExecutivGroup
+      - DownstreamSystemGroup
+  Password:
+    NoEcho: 'false'
+    Default: ABCdef.123$
+    Type: String
+    Description: New account password. Minimum password length 6-128, Require at least one uppercase letter, Require at least one lowercase letter, Require at least one number, Require at least one nonalphanumeric character e.g. "ABCdef.123$". Must be changed at first login. 
+    MinLength: '8'
+    MaxLength: '41'
+    AllowedPattern: "^[^\"@]+$"
+    ConstraintDescription: IAM user's console password, that follows accounts IAM password policy (Minimum password length 6-128, Require at least one uppercase letter, Require at least one lowercase letter, Require at least one number, Require at least one nonalphanumeric character)
+  FirstName:
+    Type: String
+    Description: New account firstname. Alphanumeric characters only and must start with a uppercase letter.
+    AllowedPattern: "^[A-Z][A-Za-z0-9]+$"
+    ConstraintDescription: Alphanumeric characters only and must start with a uppercase letter
+  LastName:
+    Type: String
+    Description: New account lastname. Alphanumeric characters only and must start with a uppercase letter.
+    AllowedPattern: "^[A-Z][A-Za-z0-9]+$"
+    ConstraintDescription: Alphanumeric characters only and must start with a uppercase letter
+Resources:
+  DataLakeUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Join
+        - ''
+        - - 'DLake-'
+          - !Ref 'FirstName'
+          - '-'
+          - !Ref 'LastName'
+      LoginProfile:
+        Password: !Ref 'Password'
+        PasswordResetRequired: 'True'
+  DataLakeGroups:
+    Type: AWS::IAM::UserToGroupAddition
+    Properties:
+      GroupName: !Ref 'GroupName'
+      Users: [!Ref 'DataLakeUser']
+  DataLakeKeys:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref 'DataLakeUser'
+Outputs:
+  UserName:
+    Value: !Join
+      - ''
+      - - 'DLake-'
+        - !Ref 'FirstName'
+        - '-'
+        - !Ref 'LastName'
+    Description: IAM User Account Name
+  Password:
+    Value: !Ref 'Password'
+    Description: Must be changed at first login!
+  GroupName:
+    Value: !Ref 'GroupName'
+    Description: IAM Data Lake Group in which the user is member of.
+  AccessKey:
+    Value: !Ref 'DataLakeKeys'
+    Description: AWSAccessKeyId of new user
+  SecretKey:
+    Value: !GetAtt [DataLakeKeys, SecretAccessKey]
+    Description: AWSSecretKey of new data lake user
+  ConsoleAccess:
+    Value: !Join 
+      - ''
+      - - 'https://'
+        - !Ref 'AWS::AccountId'
+        - .signin.aws.amazon.com/console
+    Description: The user can access his or her AWS resources via the AWS Management Console, provided that he or she has the necessary authorization.

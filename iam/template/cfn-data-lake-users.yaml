@@ -84,3 +84,4 @@ Outputs:
       - - 'https://'
         - !Ref 'AWS::AccountId'
         - .signin.aws.amazon.com/console
+    Description: The user can access his or her AWS resources via the AWS Management Console, provided that he or she has the necessary authorization.

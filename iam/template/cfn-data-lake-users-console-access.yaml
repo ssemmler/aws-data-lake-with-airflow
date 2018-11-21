@@ -1,9 +1,8 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Metadata: 
   License: Apache-2.0
-Description: 'It creates a single user that is a member of a data lake group. The groups each have
-  different IAM policies associated with them. Note: This example also creates an
-  AWSAccessKeyId/AWSSecretKey pair associated with the new user.'
+Description: 'It creates a single user with AWS Management Console access that is a member of a data lake group. Enables a password that allows users to sign-in to the AWS Management Console. 
+              The groups each have different IAM policies associated with them. Note: This example also creates an AWSAccessKeyId/AWSSecretKey pair associated with the new user.'
 Parameters:
   GroupName:
     Type: String

@@ -35,7 +35,6 @@ Resources:
           - !Ref 'FirstName'
           - '-'
           - !Ref 'LastName'
-          - '-srv'
   DataLakeGroups:
     Type: AWS::IAM::UserToGroupAddition
     Properties:

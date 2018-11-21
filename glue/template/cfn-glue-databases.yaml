@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Creates AWS Glue resources.  **WARNING**  You will be billed for the
+  AWS resources used if you create a stack from this template.
+Resources:
+  DatalakeMartDatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: datalake-mart
+        Description: Data marts are sections of data warehouses, smaller data pools for applications
+Outputs:
+  DatalakeMartDatabase:
+    Value: datalake-mart

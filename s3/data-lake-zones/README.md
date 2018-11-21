@@ -26,6 +26,8 @@ You definitely want to spend some time planning out how the data will be organiz
 # Organizing the Data Lake
 There's many different ways to organize a data lake and there are a couple of organization examples. Above all else, the data lake should be organized for optimal data retrieval. Metadata capabilities of your data lake will greatly influence how you handle organization.
 
+![Data Lake Zones](https://github.com/ssemmler/aws-data-lake-with-airflow/blob/master/docs/img/Data-Lake-Zones.jpeg "Data Lake Zones")
+
 ## The Data Lake Bucket:
 ```
 ├─s3://unit-data-lake-zones-prod-01/

@@ -1,7 +1,7 @@
 # Data Lake
 A data lake is one piece of an overall data management strategy. Conceptually, a data lake is nothing more than a data repository. The data lake can store any type of data. Cost and effort are reduced because the data is stored in its original native format with no structure (schema) required of it initially.
 
-# Planning a Data Lake
+## Planning a Data Lake
 There's various things you want to consider as you're planning a data lake -- to prevent it from becoming the dreaded data swamp -- including things such as:
 
 -  Ingestion needs (push / pull via streaming or batch)
@@ -23,12 +23,12 @@ There's various things you want to consider as you're planning a data lake -- to
 
 You definitely want to spend some time planning out how the data will be organized so that finding the data is as straightforward as possible. Just like with planning anything where data is stored (for example, a regular file share, or a SharePoint document library, etc.), you usually want to consider subject areas along with user groups and security boundaries. 
 
-# Organizing the Data Lake
+## Organizing the Data Lake
 There's many different ways to organize a data lake and there are a couple of organization examples. Above all else, the data lake should be organized for optimal data retrieval. Metadata capabilities of your data lake will greatly influence how you handle organization.
 
 ![Data Lake Zones](https://github.com/ssemmler/aws-data-lake-with-airflow/blob/master/docs/img/Data-Lake-Zones.jpeg "Data Lake Zones")
 
-## The Data Lake Bucket:
+### The Data Lake Bucket:
 ```
 ├─s3://unit-data-lake-zones-prod-01/
 ├── README.md            <- The top-level README for developers using this project.

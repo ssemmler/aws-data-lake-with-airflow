@@ -7,4 +7,5 @@ AWS Glue generates code that is customizable, reusable, and portable. Once your 
 
 AWS Glue is serverless, so there is no infrastructure to buy, set up, or manage. It automatically provisions the environment needed to complete the job, and customers pay only for the compute resources consumed while running ETL jobs. With AWS Glue, data can be available for analytics in minutes.
 
+### Introducing AWS Glue (1:47)
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=qO4Z1k2dLrw" target="_blank"><img src="http://img.youtube.com/vi/qO4Z1k2dLrw/0.jpg" alt="Introducing AWS Glue (1:47)" width="240" height="180" border="10" /></a>

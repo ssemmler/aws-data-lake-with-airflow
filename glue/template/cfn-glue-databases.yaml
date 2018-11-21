@@ -7,7 +7,7 @@ Resources:
     Properties:
       CatalogId: !Ref 'AWS::AccountId'
       DatabaseInput:
-        Name: datalake-mart
+        Name: datalake-mart-db
         Description: Data marts are sections of data warehouses, smaller data pools for applications
 Outputs:
   DatalakeMartDatabase:

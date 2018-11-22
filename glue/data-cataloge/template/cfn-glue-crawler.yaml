@@ -5,7 +5,7 @@ Resources:
     Type: AWS::Glue::Crawler
     Properties:
       Name: "stg_date_ext"
-      Role: AWSGlueServiceRole-DIP-Global
+      Role: "AWSGlueServiceRole-DIP-Global"
       DatabaseName: b-raw-db
       Targets:
         S3Targets:

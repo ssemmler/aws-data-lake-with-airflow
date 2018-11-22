@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Creates AWS Glue Crawler resources.
+Resources:
+  BRawDBDateCrawler:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: "stg_date_ext"
+      Role: AWSGlueServiceRole-DIP-Global
+      DatabaseName: b-raw-db
+      Targets:
+        S3Targets:
+          - Path: s3://unit-data-lake-zones-prod-01/B-Raw-Data-Zone/date/
+      SchemaChangePolicy:
+        UpdateBehavior: "UPDATE_IN_DATABASE"
+        DeleteBehavior: "LOG"

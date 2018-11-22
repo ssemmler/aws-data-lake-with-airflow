@@ -18,13 +18,15 @@ There are two general forms of a data catalog: a comprehensive data catalog that
 ## Comprehensive Data Catalog
 The comprehensive data catalog can be created by using standard AWS services like AWS Lambda, Amazon DynamoDB, and Amazon Elasticsearch Service (Amazon ES). At a high level, Lambda triggers are used to populate DynamoDB tables with object names and metadata when those objects are put into Amazon S3 then Amazon ES is used to search for specific assets, related metadata, and data classifications. The following figure shows a high-level architectural overview of this solution.
 
-![Comprehensive-Data-Catalog](https://github.com/ssemmler/aws-data-lake-with-airflow/tree/master/docs/img/Comprehensive-Data-Catalog.png "Comprehensive-Data-Catalog")
+![Comprehensive-Data-Catalog](https://github.com/ssemmler/aws-data-lake-with-airflow/blob/master/docs/img/Comprehensive-Data-Catalog.png "Comprehensive-Data-Catalog")
 
 ###### Figure: Comprehensive data catalog using AWS Lambda, Amazon DynamoDB, and Amazon Elasticsearch Service
 
 ## HCatalog with AWS Glue
 AWS Glue (now in beta) can be used to create a Hive-compatible Metastore Catalog of data stored in an Amazon S3-based data lake. To use AWS Glue to build your data catalog, register your data sources with AWS Glue in the AWS Management Console. AWS Glue will then crawl your S3 buckets for data sources and construct a data catalog using pre-built classifiers for many popular source formats and data types, including JSON, CSV, Parquet, and more. You may also add your own classifiers or choose classifiers from the AWS Glue community to add to your crawls to recognize and catalog other data formats. The AWS Glue-generated catalog can be used by Amazon Athena, Amazon Redshift, Amazon Redshift Spectrum, and Amazon EMR, as well as third-party analytics tools that use a standard Hive Metastore Catalog. The following figure shows a sample screenshot of the AWS Glue data catalog interface.
-![HCatalog with AWS Glue](https://github.com/ssemmler/aws-data-lake-with-airflow/tree/master/docs/img/HCatalog-with-AWS-Glue.png "HCatalog with AWS Glue")
+
+![HCatalog with AWS Glue](https://github.com/ssemmler/aws-data-lake-with-airflow/blob/master/docs/img/HCatalog-with-AWS-Glue.png "HCatalog with AWS Glue")
+
 ######Figure: Sample AWS Glue data catalog interface
 
 ### Defining a Database in Your Data Catalog
@@ -54,9 +56,9 @@ The individual databases have a similar structure to the Data Lake Zones.
 ├── D1-Curated-Stage-DB    <- Transit storage for data in the ETL process
 ├── D2-Curated-Cleanse-DB  <- Cleansing storage for data in the ETL process
 ├── D3-Curated-Core-DB     <- The Core represents the central database within the Data Lake.
-├── D3-Curated-Mart-DB     <- Data marts are sections of data warehouses, smaller data pools for applications
-├── D3-Curated-Export-DB   <- Data staged for a specific purpose
-├── D3-Curated-Transfer-DB <- Data staged for a specific application (data warehouse etc.)
+├── D4-Curated-Mart-DB     <- Data marts are sections of data warehouses, smaller data pools for applications
+├── D5-Curated-Export-DB   <- Data staged for a specific purpose
+├── D6-Curated-Transfer-DB <- Data staged for a specific application (data warehouse etc.)
 │
 ├── E-Sandbox-DB           <- The Sandbox is designed to be used by deep analysts and scientists as an unmanaged area.
 │

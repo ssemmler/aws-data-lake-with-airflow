@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS CloudFormation template to create IAM data lake roles.
+Resources:
+  DataLakeGlueCrawlerRole:
+    Type: AWS::IAM::Role
+    Condition: CreateDemoResources
+    Properties:
+      RoleName: DataLakeGlueCrawlerRole
+      Path: /
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: glue.amazonaws.com
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole
+        - arn:aws:iam::208165541056:policy/DataLakeAllScriptsPolicyRW
+        - arn:aws:iam::208165541056:policy/DataLakeAllZonesReadPolicy
+        - arn:aws:iam::208165541056:policy/DataLakeAllZonesWritePolicy

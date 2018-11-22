@@ -2,13 +2,97 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: Creates AWS Glue resources.  **WARNING**  You will be billed for the
   AWS resources used if you create a stack from this template.
 Resources:
-  DatalakeMartDatabase:
+  ATransientDB:
     Type: AWS::Glue::Database
     Properties:
       CatalogId: !Ref 'AWS::AccountId'
       DatabaseInput:
-        Name: datalake-mart-db
+        Name: a-transient-db
+        Description: Useful when data quality or validity checks are required before data can land in the raw zone.
+  BRawDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: b-raw-db
+        Description: The Raw or Persisted area of your Data Lake is where data is kept indefinitely  in its raw format.
+  CUserDropDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: c-user-drop-db
+        Description: Manually generated data
+  D1CuratedStageDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: d1-curated-stage-db
+        Description: Transit storage for data in the ETL process
+  D2CuratedCleanseDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: d2-curated-cleanse-db
+        Description: Cleansing storage for data in the ETL process
+  D3CuratedCoreDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: d3-curated-core-db
+        Description: The Core represents the central database within the Data Lake.
+  D4CuratedMartDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: d4-curated-mart-db
         Description: Data marts are sections of data warehouses, smaller data pools for applications
+  D5CuratedExportDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: d5-curated-export-db
+        Description: Data staged for a specific purpose
+  D6CuratedTransferDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: d6-curated-transfer-db
+        Description: Data staged for a specific application (data warehouse etc.)
+  ESandboxDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: e-sandbox-db
+        Description: The Sandbox is designed to be used by deep analysts and scientists as an unmanaged area.
+  FLogDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: f-log-db
+        Description: Amazon EMR, Hadoop and Glue produce log files that report status on the cluster.
+  GArchiveDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: g-archive-db
+        Description: Active archive of aged data, available for querying when needed
+  HMasterDB:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref 'AWS::AccountId'
+      DatabaseInput:
+        Name: h-master-db
+        Description: Reference data
 Outputs:
   DatalakeMartDatabase:
     Value: datalake-mart

@@ -17,7 +17,9 @@ There are two general forms of a data catalog: a comprehensive data catalog that
 
 ## Comprehensive Data Catalog
 The comprehensive data catalog can be created by using standard AWS services like AWS Lambda, Amazon DynamoDB, and Amazon Elasticsearch Service (Amazon ES). At a high level, Lambda triggers are used to populate DynamoDB tables with object names and metadata when those objects are put into Amazon S3 then Amazon ES is used to search for specific assets, related metadata, and data classifications. The following figure shows a high-level architectural overview of this solution.
+
 ![Comprehensive-Data-Catalog](https://github.com/ssemmler/aws-data-lake-with-airflow/tree/master/docs/img/Comprehensive-Data-Catalog.png "Comprehensive-Data-Catalog")
+
 ###### Figure: Comprehensive data catalog using AWS Lambda, Amazon DynamoDB, and Amazon Elasticsearch Service
 
 ## HCatalog with AWS Glue

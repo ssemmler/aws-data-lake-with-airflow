@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+# Sample CFN YAML to demonstrate creating a crawler
+#
+# Parameters section contains names that are substituted in the Resources section
+# These parameters are the names the resources created in the Data Catalog
+Parameters:
+# The name of the crawler to be created
+  CFNCrawlerName:
+    Type: String
+    Default: cfn-crawler-jdbc-flights-1
+# The name of the database to be created to contain tables
+  CFNDatabaseName:
+    Type: String
+    Default: cfn-database-jdbc-flights-1
+# The prefix for all tables crawled and created
+  CFNTablePrefixName:
+    Type: String
+    Default: cfn_jdbc_1_
+# The name of the existing connection to the MySQL database
+  CFNConnectionName:
+    Type: String
+    Default: cfn-connection-mysql-flights-1
+# The name of the JDBC path (database/schema/table) with wildcard (%) to crawl
+  CFNJDBCPath:
+    Type: String
+    Default: saldev/%
+#
+#
+# Resources section defines metadata for the Data Catalog
+Resources:
+  CFNDatabaseFlights:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseInput:
+        Name: !Ref CFNDatabaseName
+        Description: "AWS Glue container to hold metadata tables for the flights crawler"
+ #Create a crawler to crawl the flights data in MySQL database
+  CFNCrawlerFlights:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: !Ref CFNCrawlerName
+      Role: !GetAtt CFNRoleFlights.Arn
+      #Classifiers: none, use the default classifier
+      Description: AWS Glue crawler to crawl flights data
+      #Schedule: none, use default run-on-demand
+      DatabaseName: !Ref CFNDatabaseName
+      Targets:
+        JdbcTargets:
+          # JDBC MySQL database with the flights data
+          - ConnectionName: !Ref CFNConnectionName
+            Path: !Ref CFNJDBCPath
+          #Exclusions: none
+      TablePrefix: !Ref CFNTablePrefixName
+      SchemaChangePolicy:
+        UpdateBehavior: "UPDATE_IN_DATABASE"
+        DeleteBehavior: "LOG"
+      Configuration: "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}"

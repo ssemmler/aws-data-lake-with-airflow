@@ -1,0 +1,102 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  PublicKeyParameter:
+    Type: String
+    Description: "Public SSH Key for Creating an AWS Glue Development Endpoint."
+  OutputBucketParameter:
+    Type: String
+    Description: "S3 bucket for script output. This is used to grant write permissions to the role created by this template."
+  OutputPrefixParameter:
+    Type: String
+    Description: "S3 prefix for script output. This is used to grant write permissions to the role created by this template."
+    
+Resources:
+  GlueRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - glue.amazonaws.com
+                - ec2.amazonaws.com
+            Action:
+              - "sts:AssumeRole"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
+        - "arn:aws:iam::aws:policy/service-role/AWSGlueServiceNotebookRole"
+      Policies:
+        -
+          PolicyName: "SourceS3Access"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              -
+                Action:
+                  - "s3:ListBucket"
+                Effect: "Allow"
+                Resource: !Sub "arn:aws:s3:::aws-glue-datasets-${AWS::Region}"
+                Condition:
+                  StringEquals:
+                    "s3:prefix": "examples/githubarchive/month/"
+              -
+                Action:
+                  - "s3:GetObject"
+                Effect: "Allow"
+                Resource: !Sub "arn:aws:s3:::aws-glue-datasets-${AWS::Region}/examples/githubarchive/month/*"
+        -
+          PolicyName: "OutputS3Access"
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              -
+                Action:
+                  - "s3:ListBucket"
+                Effect: "Allow"
+                Resource: !Sub "arn:aws:s3:::${OutputBucketParameter}"
+                Condition:
+                  StringEquals:
+                    "s3:prefix": !Sub "${OutputPrefixParameter}"
+              -
+                Action:
+                  - "s3:GetObject"
+                  - "s3:DeleteObject"
+                  - "s3:PutObject"
+                Effect: "Allow"
+                Resource: !Sub "arn:aws:s3:::${OutputBucketParameter}/*"
+
+  InstanceProfile:
+    Type: "AWS::IAM::InstanceProfile"
+    Properties: 
+      Path: "/"
+      Roles:
+        - !Ref GlueRole
+      InstanceProfileName: !Ref GlueRole
+
+  PartitionDatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref AWS::AccountId
+      DatabaseInput:
+        Name: "githubarchive_month"
+        Description: "Database for Glue Partition blog post example."
+        
+  PartitionCrawler:
+    Type: 'AWS::Glue::Crawler'
+    Properties:
+      Role: !GetAtt GlueRole.Arn
+      Description: "A Crawler for the Sample GitHub monthly dataset."
+      DatabaseName: !Ref PartitionDatabase
+      Targets:
+        S3Targets:
+          - Path: !Sub "s3://aws-glue-datasets-${AWS::Region}/examples/githubarchive/month/data/"
+
+  PartitionDevEndpoint:
+    Type: "AWS::Glue::DevEndpoint"
+    Properties:
+      EndpointName: partition-endpoint
+      PublicKey: !Ref PublicKeyParameter
+      RoleArn: !GetAtt GlueRole.Arn

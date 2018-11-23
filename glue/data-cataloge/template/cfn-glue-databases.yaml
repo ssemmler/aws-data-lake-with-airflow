@@ -1,7 +1,17 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Creates AWS Glue resources.  **WARNING**  You will be billed for the
-  AWS resources used if you create a stack from this template.
+# CFN YAML to creater data lake crawler
+# Author: Stephan Semmler
+# Created: 2018-11-22
+#
+# Parameters section contains names that are substituted in the Resources section
+# These parameters are the names the resources created in the Data Catalog
+# Parameters:
+Description: Creates AWS Glue Database resources.
+#
+#
+# Resources section defines metadata for the Data Catalog
 Resources:
+# Create a database
   ATransientDB:
     Type: AWS::Glue::Database
     Properties:

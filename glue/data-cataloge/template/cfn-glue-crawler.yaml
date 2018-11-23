@@ -1,15 +1,33 @@
 AWSTemplateFormatVersion: '2010-09-09'
+# CFN YAML to creater data lake crawler
+# Author: Stephan Semmler
+# Created: 2018-11-22
+#
+# Parameters section contains names that are substituted in the Resources section
+# These parameters are the names the resources created in the Data Catalog
+# Parameters:
 Description: Creates AWS Glue Crawler resources.
+#
+#
+# Resources section defines metadata for the Data Catalog
 Resources:
+# Create a crawler to crawl the dates data in S3 B-Raw-Data-Zone
   BRawDBDateCrawler:
     Type: AWS::Glue::Crawler
     Properties:
-      Name: "stg_date_ext"
-      Role: "AWSGlueServiceRole-DIP-Global"
+      Name: "ext_date"
+      Role: DataLakeGlueCrawlerRole
+      #Classifiers: none, use the default classifier
+      Description: AWS Glue crawler to crawl Date data
+      #Schedule: none, use default run-on-demand
       DatabaseName: b-raw-db
       Targets:
         S3Targets:
+        # S3 path with the Date data
           - Path: s3://unit-data-lake-zones-prod-01/B-Raw-Data-Zone/date/
+        # Exclusions: none
+      TablePrefix: ext_
       SchemaChangePolicy:
         UpdateBehavior: "UPDATE_IN_DATABASE"
         DeleteBehavior: "LOG"
+      Configuration: "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}"

@@ -56,3 +56,6 @@ The individual databases have a similar structure to the Data Lake Zones.
 │   
 └── H-Master-DB            <- Reference data
 ```
+## Crawler
+###### Anzahl der Crawler pro Konto:	25
+https://docs.aws.amazon.com/de_de/glue/latest/dg/troubleshooting-service-limits.html

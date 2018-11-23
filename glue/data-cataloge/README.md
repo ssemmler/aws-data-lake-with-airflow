@@ -59,3 +59,6 @@ The individual databases have a similar structure to the Data Lake Zones.
 ## Crawler
 ###### Anzahl der Crawler pro Konto:	25
 https://docs.aws.amazon.com/de_de/glue/latest/dg/troubleshooting-service-limits.html
+
+## Populating the Data Catalog Using AWS CloudFormation Templates
+https://docs.aws.amazon.com/de_de/glue/latest/dg/populate-with-cloudformation-templates.html

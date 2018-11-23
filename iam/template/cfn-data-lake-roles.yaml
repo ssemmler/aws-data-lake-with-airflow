@@ -19,7 +19,3 @@ Resources:
         - arn:aws:iam::208165541056:policy/DataLakeAllScriptsPolicyRW
         - arn:aws:iam::208165541056:policy/DataLakeAllZonesReadPolicy
         - arn:aws:iam::208165541056:policy/DataLakeAllZonesWritePolicy
-Outputs:
-  DataLakeGlueCrawlerRoleARN:
-    Description: ARN of DataLakeGlueCrawlerRole
-    Value: !GetAtt 'DataLakeGlueCrawlerRole.Arn'

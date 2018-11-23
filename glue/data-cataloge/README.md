@@ -56,3 +56,6 @@ The individual databases have a similar structure to the Data Lake Zones.
 │   
 └── H-Master-DB            <- Reference data
 ```
+
+## Populating the Data Catalog Using AWS CloudFormation Templates
+https://docs.aws.amazon.com/de_de/glue/latest/dg/populate-with-cloudformation-templates.html

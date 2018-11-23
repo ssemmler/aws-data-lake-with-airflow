@@ -31,3 +31,22 @@ Resources:
         UpdateBehavior: "UPDATE_IN_DATABASE"
         DeleteBehavior: "LOG"
       Configuration: "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}"
+  D1CuratedStageDB:
+    Type: AWS::Glue::Crawler
+    Properties:
+      Name: "stg_date"
+      Role: DataLakeGlueCrawlerRole
+      #Classifiers: none, use the default classifier
+      Description: AWS Glue crawler to crawl Date data
+      #Schedule: none, use default run-on-demand
+      DatabaseName: d1-curated-stage-db
+      Targets:
+        S3Targets:
+        # S3 path with the Date data
+          - Path: s3://unit-data-lake-zones-prod-01/D-Curated-Data-Zone/Stage/stg_date
+        # Exclusions: none
+      #TablePrefix:
+      SchemaChangePolicy:
+        UpdateBehavior: "UPDATE_IN_DATABASE"
+        DeleteBehavior: "LOG"
+      Configuration: "{\"Version\":1.0,\"CrawlerOutput\":{\"Partitions\":{\"AddOrUpdateBehavior\":\"InheritFromTable\"},\"Tables\":{\"AddOrUpdateBehavior\":\"MergeNewColumns\"}}}"

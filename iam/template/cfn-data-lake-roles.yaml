@@ -1,11 +1,39 @@
 AWSTemplateFormatVersion: '2010-09-09'
+# CFN YAML to create IAM data lake roles.
+# Author: Stephan Semmler
+# Createt: 2018-11-11
+#
+# Parameters section contains names that are substituted in the Resources section
+# These parameters are the names the resources created in the Data Catalog
+# Parameters:
 Description: AWS CloudFormation template to create IAM data lake roles.
+#
+# Resources section defines metadata for the Data Catalog
 Resources:
+# Creates roles for the data lake.
   DataLakeGlueCrawlerRole:
     Type: AWS::IAM::Role
     Description: Allows Glue to crawl tables across Data Lake.
     Properties:
       RoleName: DataLakeGlueCrawlerRole
+      Path: /
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service: glue.amazonaws.com
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole
+        - arn:aws:iam::208165541056:policy/DataLakeAllScriptsPolicyRW
+        - arn:aws:iam::208165541056:policy/DataLakeAllZonesReadPolicy
+        - arn:aws:iam::208165541056:policy/DataLakeAllZonesWritePolicy
+  DataLakeGlueJobRole:
+    Type: AWS::IAM::Role
+    Description: Allows Glue to run a ETL-job.
+    Properties:
+      RoleName: DataLakeGlueJobRole
       Path: /
       AssumeRolePolicyDocument:
         Version: '2012-10-17'

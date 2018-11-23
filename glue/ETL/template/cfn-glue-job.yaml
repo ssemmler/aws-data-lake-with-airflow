@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+# CFN YAML to create AWS Glue data lake ETL-jobs.
+# Author: Stephan Semmler
+# Createt: 2018-11-11
+#
+# Parameters section contains names that are substituted in the Resources section
+# These parameters are the names the resources created in the Data Catalog
+# Parameters:
+Description: AWS CloudFormation template to create AWS Glue jobs.
+#
+# Resources section defines metadata for the Data Catalog
+Resources:
+# Create job to run the data lake etl scripts.
+# The script already exists and is called by this job
+  DataLakeJobStgDate:
+    Type: AWS::Glue::Job
+    Properties:
+      Name: df_stg_date1
+      Role: DataLakeGlueJobRole
+      #DefaultArguments: JSON object
+      # If script written in Scala, then set DefaultArguments={'--job-language'; 'scala', '--class': 'your scala class'}
+      #Connections:  No connection needed for S3 to S3 job
+      #  ConnectionsList
+      #MaxRetries: Double
+      Description: Job created with CloudFormation
+      LogUri: s3://unit-data-lake-zones-prod-01/F-Log-Zone/glue
+      Command: 
+        Name: glueetl
+        ScriptLocation: s3://unit-data-lake-scripts-prod-01/glue/dataflow/stage/df_stg_date
+             # for access to directories use proper IAM role with permission to buckets and folders that begin with "aws-glue-"
+             # script uses temp directory from job definition if required (temp directory not used S3 to S3)
+             # script defines target for output as s3://aws-glue-target/sal
+      AllocatedCapacity: 5
+      ExecutionProperty:
+        MaxConcurrentRuns: 1
+      DefaultArguments:
+        '--EFFECTIV_DATE': 2018-11-12
+        '--TempDir': 's3://unit-data-lake-zones-prod-01/A-Transient-Zone/glue'
+        '--job-bookmark-option': 'job-bookmark-enable'
+        '--enable-metrics': 'true'

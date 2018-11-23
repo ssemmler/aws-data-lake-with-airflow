@@ -62,3 +62,6 @@ https://docs.aws.amazon.com/de_de/glue/latest/dg/troubleshooting-service-limits.
 
 ## Populating the Data Catalog Using AWS CloudFormation Templates
 https://docs.aws.amazon.com/de_de/glue/latest/dg/populate-with-cloudformation-templates.html
+
+## The challenge of orchestrating an ETL workflow
+https://github.com/aws-samples/aws-etl-orchestrator

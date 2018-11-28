@@ -1,5 +1,7 @@
 # Airflow
 
+aws glue start-job-run  --job-name df_stg_date --region eu-west-1 --arguments EFFECTIV_DATE=2018-11-12
+
 # Links
 https://github.com/apache/incubator-airflow/tree/master/airflow
 

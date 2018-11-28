@@ -16,3 +16,5 @@ https://aws.amazon.com/blogs/big-data/build-a-concurrent-data-orchestration-pipe
 https://github.com/astronomer/airflow-guides
 
 http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airflow/
+
+https://github.com/postrational/airflow_tutorial/tree/fc918909763eba0a1671ecda4629b4ffec45c441/airflow_home

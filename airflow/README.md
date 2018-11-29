@@ -7,14 +7,13 @@ ssh -i "airflow_key_pair.pem" ec2-user@ec2-your-public-ip.your-region.compute.am
 
 airflow scheduler
 
-sudo as the root user
+# sudo as the root user
 sudo su
-Navigate to the airflow directory which was created by the cloudformation template – Look at the user-data section.
+# Navigate to the airflow directory which was created by the cloudformation template – Look at the user-data section.
 cd ~/airflow
 source ~/.bash_profile
 ```
 
-5
 # Links
 https://github.com/apache/incubator-airflow/tree/master/airflow
 

@@ -5,13 +5,14 @@ aws glue start-job-run  --job-name df_stg_date --region eu-west-1 --arguments EF
 chmod 400 airflow_key_pair.pem
 ssh -i "airflow_key_pair.pem" ec2-user@ec2-your-public-ip.your-region.compute.amazonaws.com
 
-airflow scheduler
-
 # sudo as the root user
 sudo su
 # Navigate to the airflow directory which was created by the cloudformation template – Look at the user-data section.
 cd ~/airflow
 source ~/.bash_profile
+
+airflow scheduler
+
 ```
 
 # Links

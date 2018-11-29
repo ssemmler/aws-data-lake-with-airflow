@@ -1,7 +1,7 @@
 # Airflow
 
 aws glue start-job-run  --job-name df_stg_date --region eu-west-1 --arguments EFFECTIV_DATE=2018-11-12
-'''
+```
 chmod 400 airflow_key_pair.pem
 ssh -i "airflow_key_pair.pem" ec2-user@ec2-your-public-ip.your-region.compute.amazonaws.com
 
@@ -12,7 +12,7 @@ sudo su
 Navigate to the airflow directory which was created by the cloudformation template – Look at the user-data section.
 cd ~/airflow
 source ~/.bash_profile
-'''
+```
 
 5
 # Links

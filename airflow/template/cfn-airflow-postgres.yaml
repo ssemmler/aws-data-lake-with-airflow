@@ -85,6 +85,8 @@ Resources:
          wget http://files.grouplens.org/datasets/movielens/ml-latest.zip && unzip ml-latest.zip
          # Upload the movielens dataset files to the S3 bucket
          aws s3 cp ml-latest s3://${S3BucketName} --recursive
+         # Install jq is a powerful JSON parsing tool.
+         sudo yum install -y jq
          # Install git
          sudo yum install -y git
          # Clone the git repository
@@ -206,6 +208,7 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3FullAccess
         - arn:aws:iam::aws:policy/AmazonElasticMapReduceFullAccess
+        - arn:aws:iam::aws:policy/AWSGlueConsoleFullAccess
   EC2InstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:

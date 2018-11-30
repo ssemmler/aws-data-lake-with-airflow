@@ -2,6 +2,8 @@
 ```
 aws glue start-job-run  --job-name df_stg_date --region eu-west-1 --arguments EFFECTIV_DATE=2018-11-12
 aws glue get-job --job-name df_stg_date --region eu-west-1
+aws glue get-job-run --job-name df_stg_date --run-id jr_8e9e19b85f3fcc1e21cee9f3763e62030547e4b9611abde33e781accc790fda7 --region eu-west-1 --output  json | jq -r ".JobRun.JobRunState"
+SUCCEEDED
 ```
 
 ```

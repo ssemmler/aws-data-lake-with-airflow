@@ -43,7 +43,7 @@ The {{ }} brackets tell Airflow that this is a Jinja template, and ds is a varia
 
 ```
 
-For more Information see also: https://diogoalexandrefranco.github.io/about-airflow-date-macros-ds-and-execution-date/
+For more Information see this [Link]( https://diogoalexandrefranco.github.io/about-airflow-date-macros-ds-and-execution-date/).
 
 # Links
 https://github.com/apache/incubator-airflow/tree/master/airflow
@@ -63,5 +63,8 @@ http://michal.karzynski.pl/blog/2017/03/19/developing-workflows-with-apache-airf
 https://github.com/postrational/airflow_tutorial/tree/fc918909763eba0a1671ecda4629b4ffec45c441/airflow_home
 
 ###### Use AWS CLI and jq to do some things
-
 https://gist.github.com/brasey/088654b67cb00f88bbaf
+
+###### About Airflow date macros, ds and execution_date
+https://diogoalexandrefranco.github.io/about-airflow-date-macros-ds-and-execution-date/
+https://airflow.apache.org/code.html#macros

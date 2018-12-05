@@ -24,6 +24,22 @@ source ~/.bash_profile
 airflow scheduler
 
 ```
+## Airflow date macros, ds and execution_date
+A very common pattern when developing ETL workflows in any technology is to parameterize tasks with the execution date, so that tasks can, for example, work on the right data partition. Apache Airflow allows the usage of Jinja templating when defining tasks, where it makes available multiple helpful variables and macros to aid in date manipulation.
+
+A simple task that executes a run.sh bash script with the execution date as a parameter might look like the following:
+```
+task = BashOperator(
+    task_id='bash_script',
+    bash_command='./run.sh {{ ds }}',
+    dag=dag)
+    ```
+The {{ }} brackets tell Airflow that this is a Jinja template, and ds is a variable made available by Airflow that is replaced by the execution date in the format YYYY-MM-DD. Thus, in the dag run stamped with 2018-06-04, this would render to:
+
+```
+./run.sh 2018-06-04
+```
+For more Information see also: https://diogoalexandrefranco.github.io/about-airflow-date-macros-ds-and-execution-date/
 
 # Links
 https://github.com/apache/incubator-airflow/tree/master/airflow

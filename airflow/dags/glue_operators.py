@@ -1,3 +1,11 @@
+######################################################################################
+##
+## AWS Glue Tutorial DAG
+## Example of an AWS Glue DAG that executes a glue job with the help of an operator
+## and waits for the end with a sensor.
+## Autor: Stephan Semmler 2018-12-04
+## GitHub: https://github.com/ssemmler/aws-data-lake-with-airflow/blob/master/airflow/
+#####################################################################################
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
